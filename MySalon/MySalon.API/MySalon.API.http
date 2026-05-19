@@ -1,0 +1,6 @@
+@MySalon.API_HostAddress = http://localhost:5186
+
+GET {{MySalon.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

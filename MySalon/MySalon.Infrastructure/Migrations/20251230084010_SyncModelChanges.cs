@@ -1,0 +1,45 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace MySalon.Infrastructure.Migrations
+{
+    /// <inheritdoc />
+    public partial class SyncModelChanges : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Description",
+                table: "Salons",
+                type: "nvarchar(1000)",
+                maxLength: 1000,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.RenameColumn(
+                name: "PhoneNumber",
+                table: "Salons",
+                newName: "Phone");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Description",
+                table: "Salons",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(1000)",
+                oldMaxLength: 1000,
+                oldNullable: true);
+        }
+    }
+}

@@ -1,0 +1,17 @@
+﻿using System;
+
+namespace MySalon.Application.DTOs.Stylists
+{
+    public class StylistDto
+    {
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Bio { get; set; }
+        public double Rating { get; set; }
+        public string ImageUrl { get; set; }
+        public bool IsActive { get; set; }
+    }
+}

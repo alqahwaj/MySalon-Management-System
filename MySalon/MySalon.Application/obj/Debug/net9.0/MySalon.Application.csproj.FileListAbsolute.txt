@@ -1,0 +1,30 @@
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.csproj.AssemblyReference.cache
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.AssemblyInfoInputs.cache
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.AssemblyInfo.cs
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.csproj.CoreCompileInputs.cache
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Application.deps.json
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Application.dll
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Application.pdb
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Domain.dll
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Domain.pdb
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon..EB9FD5A9.Up2Date
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.dll
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\refint\MySalon.Application.dll
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.pdb
+C:\Users\alqahwa\source\repos\MySalon\MySalon.Application\obj\Debug\net9.0\ref\MySalon.Application.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Application.deps.json
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Application.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Application.pdb
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Domain.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\bin\Debug\net9.0\MySalon.Domain.pdb
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.csproj.AssemblyReference.cache
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.AssemblyInfoInputs.cache
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.AssemblyInfo.cs
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.csproj.CoreCompileInputs.cache
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon..EB9FD5A9.Up2Date
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\refint\MySalon.Application.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.pdb
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\ref\MySalon.Application.dll
