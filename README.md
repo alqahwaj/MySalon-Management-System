@@ -1,6 +1,6 @@
 # MySalon - Complete Salon Management System ✂️
 
-An integrated, enterprise-level SaaS solution for salon management. Built with modern web technologies, this project strictly adheres to **Clean Architecture** principles to ensure scalability, maintainability, and clear separation of concerns.
+An integrated, production-ready solution for salon management. Built with modern web technologies, this project strictly adheres to Clean Architecture principles to ensure scalability, maintainability, and clear separation of concerns.
 
 ## 🚀 Tech Stack
 
