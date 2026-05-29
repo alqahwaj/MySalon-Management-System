@@ -92,7 +92,7 @@ namespace MySalon.Application.Services
             };
         }
 
-        public async Task<StylistDto> UpdateStylistAsync(Guid id, CreateStylistDto dto)
+        public async Task<StylistDto> UpdateStylistAsync(Guid id, UpdateStylistDto dto)
         {
             var stylist = await _repository.GetByIdAsync(id);
 

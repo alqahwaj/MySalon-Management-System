@@ -16,7 +16,7 @@ namespace MySalon.Application.Interfaces.Services
 
         Task<IEnumerable<StylistDto>> GetAllStylistsAsync();
 
-        Task<StylistDto> UpdateStylistAsync(Guid id, CreateStylistDto dto);
+        Task<StylistDto> UpdateStylistAsync(Guid id, UpdateStylistDto dto);
 
         Task DeleteStylistAsync(Guid id);
 

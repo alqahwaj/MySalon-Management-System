@@ -28,3 +28,4 @@ C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\n
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\refint\MySalon.Application.dll
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.pdb
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\ref\MySalon.Application.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Application\obj\Debug\net9.0\MySalon.Application.sourcelink.json

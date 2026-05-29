@@ -36,3 +36,4 @@ C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Infrastructure\obj\Debu
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Infrastructure\obj\Debug\net9.0\MySalon.Infrastructure.pdb
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Infrastructure\obj\Debug\net9.0\MySalon.Infrastructure.genruntimeconfig.cache
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Infrastructure\obj\Debug\net9.0\ref\MySalon.Infrastructure.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.Infrastructure\obj\Debug\net9.0\MySalon.Infrastructure.sourcelink.json

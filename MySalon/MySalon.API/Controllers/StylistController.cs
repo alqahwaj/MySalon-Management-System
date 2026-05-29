@@ -42,7 +42,7 @@ namespace MySalon.API.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin, SalonOwner")]
-        public async Task<ActionResult<StylistDto>> Update(Guid id, [FromBody] CreateStylistDto dto)
+        public async Task<ActionResult<StylistDto>> Update(Guid id, [FromBody] UpdateStylistDto dto)
         {
             var updatedStylist = await _stylistAppService.UpdateStylistAsync(id, dto);
             return Ok(updatedStylist);
