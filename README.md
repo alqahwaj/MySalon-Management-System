@@ -2,6 +2,19 @@
 
 An integrated, production-ready solution for salon management. Built with modern web technologies, this project strictly adheres to Clean Architecture principles to ensure scalability, maintainability, and clear separation of concerns.
 
+🚀 **Live Demo:** [MySalon Management System](https://my-salon-management-system-my5dqfru8.vercel.app)
+
+💡 **Test Accounts (No Sign-up Required):**
+- **👑 Admin Account**
+  - **Email:** `admin@mysalon.com`
+  - **Password:** `Admin@123456!`
+- **💇‍♂️ Stylist Account**
+  - **Email:** `mohammadkozlova@mysalon.com`
+  - **Password:** `Stylist@123`
+- **👤 Customer Account**
+  - **Email:** `amerabulawi@gmail.com`
+  - **Password:** `@MySalon1`
+
 ## 🚀 Tech Stack
 
 ### Frontend
