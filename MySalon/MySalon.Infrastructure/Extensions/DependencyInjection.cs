@@ -39,8 +39,11 @@ namespace MySalon.Infrastructure.Extensions
             services.AddScoped<ICustomerAppService, CustomerAppService>();
             services.AddScoped<IBookingAppService, BookingAppService>();
             services.AddScoped<IStylistWorkHourAppService, StylistWorkHoursAppService>();
-            services.AddScoped<IFileService, LocalFileService>();
             services.AddScoped<IDashboardAppService, DashboardAppService>();
+
+            services.AddScoped<IFileService, LocalFileService>();
+
+            services.AddScoped<IPhotoService, PhotoService>();
 
             return services;
         }

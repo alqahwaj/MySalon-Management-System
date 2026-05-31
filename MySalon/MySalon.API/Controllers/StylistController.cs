@@ -19,7 +19,7 @@ namespace MySalon.API.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin, SalonOwner")]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<StylistDto>> Create(CreateStylistDto dto)
+        public async Task<ActionResult<StylistDto>> Create([FromForm] CreateStylistDto dto) 
         {
             var result = await _stylistAppService.CreateStylistAsync(dto);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
@@ -42,7 +42,7 @@ namespace MySalon.API.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin, SalonOwner")]
-        public async Task<ActionResult<StylistDto>> Update(Guid id, [FromBody] UpdateStylistDto dto)
+        public async Task<ActionResult<StylistDto>> Update(Guid id, [FromForm] UpdateStylistDto dto) 
         {
             var updatedStylist = await _stylistAppService.UpdateStylistAsync(id, dto);
             return Ok(updatedStylist);

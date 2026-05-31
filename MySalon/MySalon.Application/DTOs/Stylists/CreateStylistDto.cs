@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http; 
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace MySalon.Application.DTOs.Stylists
@@ -15,7 +16,6 @@ namespace MySalon.Application.DTOs.Stylists
 
         [Required(ErrorMessage = "Salon is required")]
         public Guid SalonId { get; set; }
-
 
         [MaxLength(20)]
         [Phone]
@@ -34,5 +34,7 @@ namespace MySalon.Application.DTOs.Stylists
         public string? Bio { get; set; }
 
         public string? ImageUrl { get; set; }
+
+        public IFormFile? ImageFile { get; set; }
     }
 }

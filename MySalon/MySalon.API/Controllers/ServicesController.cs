@@ -20,7 +20,7 @@ namespace MySalon.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ServiceDto>> Create(CreateServiceDto dto)
+        public async Task<ActionResult<ServiceDto>> Create([FromForm] CreateServiceDto dto) 
         {
             var result = await _ServiceAppService.CreateServiceAsync(dto);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
@@ -50,7 +50,7 @@ namespace MySalon.API.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update(Guid id, [FromBody] CreateServiceDto dto)
+        public async Task<IActionResult> Update(Guid id, [FromForm] CreateServiceDto dto) 
         {
             await _ServiceAppService.UpdateServiceAsync(id, dto);
             return NoContent();

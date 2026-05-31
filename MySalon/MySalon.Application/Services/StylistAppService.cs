@@ -16,12 +16,18 @@ namespace MySalon.Application.Services
         private readonly IStylistRepository _repository;
         private readonly IBookingRepository _bookingRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IPhotoService _photoService; 
 
-        public StylistAppService(IStylistRepository repository, IBookingRepository bookingRepository, UserManager<ApplicationUser> userManager)
+        public StylistAppService(
+            IStylistRepository repository,
+            IBookingRepository bookingRepository,
+            UserManager<ApplicationUser> userManager,
+            IPhotoService photoService) 
         {
             _repository = repository;
             _bookingRepository = bookingRepository;
             _userManager = userManager;
+            _photoService = photoService;
         }
 
         public async Task<StylistDto> CreateStylistAsync(CreateStylistDto dto)
@@ -39,6 +45,12 @@ namespace MySalon.Application.Services
 
             await _userManager.AddToRoleAsync(user, "Stylist");
 
+            string? imageUrl = dto.ImageUrl;
+            if (dto.ImageFile != null)
+            {
+                imageUrl = await _photoService.AddPhotoAsync(dto.ImageFile);
+            }
+
             var newStylist = new Stylist
             {
                 FirstName = dto.FirstName,
@@ -47,7 +59,7 @@ namespace MySalon.Application.Services
                 Phone = dto.Phone,
                 Email = dto.Email,
                 Bio = dto.Bio,
-                ImageUrl = dto.ImageUrl,
+                ImageUrl = imageUrl, 
                 IsActive = true,
                 ApplicationUserId = user.Id
             };
@@ -115,7 +127,12 @@ namespace MySalon.Application.Services
             stylist.Email = dto.Email;
             stylist.Bio = dto.Bio;
 
-            if (!string.IsNullOrEmpty(dto.ImageUrl))
+            // 👈 لوجيك تحديث الصورة على Cloudinary
+            if (dto.ImageFile != null)
+            {
+                stylist.ImageUrl = await _photoService.AddPhotoAsync(dto.ImageFile);
+            }
+            else if (!string.IsNullOrEmpty(dto.ImageUrl))
             {
                 stylist.ImageUrl = dto.ImageUrl;
             }

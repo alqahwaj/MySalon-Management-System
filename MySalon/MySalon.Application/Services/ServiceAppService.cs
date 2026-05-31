@@ -13,10 +13,12 @@ namespace MySalon.Application.Services
     public class ServiceAppService : IServiceAppService
     {
         private readonly IServiceRepository _repository;
+        private readonly IPhotoService _photoService; 
 
-        public ServiceAppService(IServiceRepository repository)
+        public ServiceAppService(IServiceRepository repository, IPhotoService photoService)
         {
             _repository = repository;
+            _photoService = photoService; 
         }
 
         public async Task<ServiceDto> CreateServiceAsync(CreateServiceDto dto)
@@ -28,12 +30,19 @@ namespace MySalon.Application.Services
             if (!dto.Category.HasValue)
                 throw new Exception("Category is required.");
 
+            string? imageUrl = dto.ImageUrl;
+            if (dto.ImageFile != null)
+            {
+                var uploadResult = await _photoService.AddPhotoAsync(dto.ImageFile);
+                imageUrl = uploadResult;
+            }
+
             var newService = new Service
             {
                 Name = dto.Name,
                 Description = dto.Description,
-                Category = dto.Category.Value, 
-                ImageUrl = dto.ImageUrl
+                Category = dto.Category.Value,
+                ImageUrl = imageUrl 
             };
 
             var savedService = await _repository.AddAsync(newService);
@@ -67,7 +76,12 @@ namespace MySalon.Application.Services
                 service.Category = dto.Category.Value;
             }
 
-            if (!string.IsNullOrEmpty(dto.ImageUrl))
+            if (dto.ImageFile != null)
+            {
+                var uploadResult = await _photoService.AddPhotoAsync(dto.ImageFile);
+                service.ImageUrl = uploadResult; 
+            }
+            else if (!string.IsNullOrEmpty(dto.ImageUrl))
             {
                 service.ImageUrl = dto.ImageUrl;
             }
