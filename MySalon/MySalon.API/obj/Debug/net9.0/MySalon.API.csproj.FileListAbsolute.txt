@@ -335,3 +335,5 @@ C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.API\obj\Debug\net9.0\My
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.API\obj\Debug\net9.0\MySalon.API.genruntimeconfig.cache
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.API\obj\Debug\net9.0\ref\MySalon.API.dll
 C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.API\obj\Debug\net9.0\MySalon.API.sourcelink.json
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.API\bin\Debug\net9.0\CloudinaryDotNet.dll
+C:\Users\alqahwa\Desktop\MYSalon project\MySalon\MySalon.API\bin\Debug\net9.0\Newtonsoft.Json.dll
