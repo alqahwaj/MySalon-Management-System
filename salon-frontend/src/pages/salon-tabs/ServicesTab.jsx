@@ -123,57 +123,33 @@ export default function ServicesTab() {
     e.preventDefault();
     setIsCreatingBase(true);
     try {
-      let uploadedImageUrl = "";
-      
+      const formData = new FormData();
+      formData.append("Name", newBaseService.name);
+      formData.append("Description", newBaseService.description);
+      formData.append("Category", parseInt(newBaseService.category));
+
       if (selectedFile) {
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-        
-        const response = await fetch(`${API_URL}/Files/upload`, {
-            method: 'POST',
-            body: formData
-        });
-        if (!response.ok) throw new Error();
-        const uploadData = await response.json();
-        uploadedImageUrl = uploadData.url; 
+        formData.append("ImageFile", selectedFile);
       }
-      
+
       if (baseFormMode === 'edit') {
-        const existing = baseServices.find(b => (b.id || b.Id) === selectedBaseId);
-        const finalImageUrl = uploadedImageUrl || existing?.imageUrl || existing?.ImageUrl || "";
-        
-        const payload = {
-          id: selectedBaseId, 
-          Id: selectedBaseId, 
-          name: newBaseService.name,
-          Name: newBaseService.name,
-          description: newBaseService.description,
-          Description: newBaseService.description,
-          category: parseInt(newBaseService.category),
-          Category: parseInt(newBaseService.category),
-          imageUrl: finalImageUrl,
-          ImageUrl: finalImageUrl
-        };
-        await api.put(`/Services/${selectedBaseId}`, payload);
+        await api.put(`/Services/${selectedBaseId}`, formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
         alert(t('settings.servicesTab.editSuccess'));
       } else {
-        const payload = {
-          name: newBaseService.name,
-          Name: newBaseService.name,
-          description: newBaseService.description,
-          Description: newBaseService.description,
-          category: parseInt(newBaseService.category),
-          Category: parseInt(newBaseService.category),
-          imageUrl: uploadedImageUrl,
-          ImageUrl: uploadedImageUrl
-        };
-        await api.post('/Services', payload);
+        await api.post('/Services', formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
         alert(t('settings.servicesTab.createSuccess'));
       }
 
       handleCancelBaseForm();
       fetchData(); 
-    } catch (err) { alert(t('settings.servicesTab.createError')); } 
+    } catch (err) { 
+      alert(t('settings.servicesTab.createError')); 
+      console.error(err);
+    } 
     finally { setIsCreatingBase(false); }
   };
 
@@ -330,7 +306,7 @@ export default function ServicesTab() {
                   return (
                     <tr key={sId} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors text-zinc-800 dark:text-zinc-200">
                       <td className="px-6 py-4 font-semibold flex items-center gap-3 text-start">
-                        {s.service?.imageUrl && <img src={`${SERVER_URL}${s.service.imageUrl}`} alt="" className="w-8 h-8 rounded-md object-cover border dark:border-zinc-700" />}
+                        {s.service?.imageUrl && <img src={s.service.imageUrl} alt="" className="w-8 h-8 rounded-md object-cover border dark:border-zinc-700" />}
                         {s.serviceName || s.ServiceName || s.service?.name}
                       </td>
                       <td className="px-6 py-4 text-primary font-bold text-start">${s.price || s.Price}</td>
