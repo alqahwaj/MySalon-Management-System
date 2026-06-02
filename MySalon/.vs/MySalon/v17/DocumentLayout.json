@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.application\\dtos\\stylists\\updatestylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|solutionrelative:mysalon.application\\dtos\\stylists\\updatestylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.application\\dtos\\stylists\\createstylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|solutionrelative:mysalon.application\\dtos\\stylists\\createstylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FCFE152C-9745-4751-89A6-D9354B2A481C}|MySalon.Infrastructure\\MySalon.Infrastructure.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.infrastructure\\extensions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FCFE152C-9745-4751-89A6-D9354B2A481C}|MySalon.Infrastructure\\MySalon.Infrastructure.csproj|solutionrelative:mysalon.infrastructure\\extensions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -45,14 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.application\\dtos\\services\\createservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|solutionrelative:mysalon.application\\dtos\\services\\createservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.application\\dtos\\stylists\\updatestylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|solutionrelative:mysalon.application\\dtos\\stylists\\updatestylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.application\\dtos\\stylists\\createstylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B67487A5-4AF1-43CB-8E49-6C18EA58A979}|MySalon.Application\\MySalon.Application.csproj|solutionrelative:mysalon.application\\dtos\\stylists\\createstylistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FCFE152C-9745-4751-89A6-D9354B2A481C}|MySalon.Infrastructure\\MySalon.Infrastructure.csproj|c:\\users\\alqahwa\\desktop\\mysalon project\\mysalon\\mysalon.infrastructure\\services\\photoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -114,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -122,20 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CloudinarySettings.cs",
-              "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
-              "RelativeDocumentMoniker": "MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
-              "ToolTip": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
-              "RelativeToolTip": "MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-02T13:55:43.485Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CreateSalonDto.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Salons\\CreateSalonDto.cs",
               "RelativeDocumentMoniker": "MySalon.Application\\DTOs\\Salons\\CreateSalonDto.cs",
@@ -143,24 +130,24 @@
               "RelativeToolTip": "MySalon.Application\\DTOs\\Salons\\CreateSalonDto.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAUwBYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T20:16:05.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-31T20:16:05.733Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "CreateStylistDto.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Stylists\\CreateStylistDto.cs",
               "RelativeDocumentMoniker": "MySalon.Application\\DTOs\\Stylists\\CreateStylistDto.cs",
               "ToolTip": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Stylists\\CreateStylistDto.cs",
               "RelativeToolTip": "MySalon.Application\\DTOs\\Stylists\\CreateStylistDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwCcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T19:37:52.286Z"
+              "WhenOpened": "2026-05-31T19:37:52.286Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "CreateServiceDto.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Services\\CreateServiceDto.cs",
               "RelativeDocumentMoniker": "MySalon.Application\\DTOs\\Services\\CreateServiceDto.cs",
@@ -172,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "StylistController.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.API\\Controllers\\StylistController.cs",
               "RelativeDocumentMoniker": "MySalon.API\\Controllers\\StylistController.cs",
@@ -184,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Infrastructure\\Extensions\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "MySalon.Infrastructure\\Extensions\\DependencyInjection.cs",
@@ -197,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.API\\Program.cs",
               "RelativeDocumentMoniker": "MySalon.API\\Program.cs",
@@ -205,12 +192,36 @@
               "RelativeToolTip": "MySalon.API\\Program.cs",
               "ViewState": "AgIAAFEAAAAAAAAAAAAAAHYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T17:28:50.46Z",
+              "WhenOpened": "2026-04-22T17:28:50.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateStylistDto.cs",
+              "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
+              "RelativeDocumentMoniker": "MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
+              "ToolTip": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
+              "RelativeToolTip": "MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:36:47.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
+              "Title": "CloudinarySettings.cs",
+              "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
+              "RelativeDocumentMoniker": "MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
+              "ToolTip": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
+              "RelativeToolTip": "MySalon.Infrastructure\\Settings\\CloudinarySettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T13:55:43.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ServiceDto.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Services\\ServiceDto.cs",
               "RelativeDocumentMoniker": "MySalon.Application\\DTOs\\Services\\ServiceDto.cs",
@@ -222,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ServiceAppService.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\Services\\ServiceAppService.cs",
               "RelativeDocumentMoniker": "MySalon.Application\\Services\\ServiceAppService.cs",
@@ -234,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.API\\appsettings.json",
               "RelativeDocumentMoniker": "MySalon.API\\appsettings.json",
@@ -246,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ServicesController.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.API\\Controllers\\ServicesController.cs",
               "RelativeDocumentMoniker": "MySalon.API\\Controllers\\ServicesController.cs",
@@ -270,7 +281,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "StylistAppService.cs",
               "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\Services\\StylistAppService.cs",
               "RelativeDocumentMoniker": "MySalon.Application\\Services\\StylistAppService.cs",
@@ -291,18 +302,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-29T15:37:43.195Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UpdateStylistDto.cs",
-              "DocumentMoniker": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
-              "RelativeDocumentMoniker": "MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
-              "ToolTip": "C:\\Users\\alqahwa\\Desktop\\MYSalon project\\MySalon\\MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
-              "RelativeToolTip": "MySalon.Application\\DTOs\\Stylists\\UpdateStylistDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-29T15:36:47.669Z"
             },
             {
               "$type": "Document",
