@@ -31,6 +31,10 @@ export default function Sidebar({ onClose }) {
 
   const role = user?.role?.toLowerCase()
 
+  // 🌟 التعديل الاحترافي هنا: سحب المسمى من ملفات الترجمة حسب اللغة الحالية
+  const currentRole = role || 'customer';
+  const roleDisplayName = t(`roles.${currentRole}`);
+
   const navByRole = {
     admin: [
       { to: '/dashboard',    icon: '📊', label: t('nav.dashboard') },
@@ -57,7 +61,8 @@ export default function Sidebar({ onClose }) {
         <span className="font-display text-2xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-wide">
           {t('brand')}
         </span>
-        <p className="text-xs text-zinc-400 mt-0.5 capitalize">{role || 'Customer'} Portal</p>
+        {/* 🌟 عرض المسمى המترجم بدلاً من Portal */}
+        <p className="text-xs text-zinc-400 mt-0.5">{roleDisplayName}</p>
       </div>
 
       {/* Nav items */}
@@ -95,7 +100,8 @@ export default function Sidebar({ onClose }) {
             <p className="text-sm font-medium text-zinc-800 dark:text-zinc-100 truncate">
               {user?.firstName} {user?.lastName}
             </p>
-            <p className="text-xs text-zinc-400 capitalize">{role || 'customer'}</p>
+            {/* 🌟 عرض المسمى המترجم تحت اسم المستخدم */}
+            <p className="text-xs text-zinc-400">{roleDisplayName}</p>
           </div>
           <button
             onClick={logout}

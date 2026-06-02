@@ -281,6 +281,11 @@
   "language": {
     "toggle": "EN"
   },
+  "roles": {
+    "admin": "مدير النظام",
+    "stylist": "كادر العمل",
+    "customer": "حساب الزبون"
+  },
   "notFound": "الصفحة غير موجودة",
   "goHome": "الصفحة الرئيسية"
 }

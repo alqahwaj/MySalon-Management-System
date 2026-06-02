@@ -281,6 +281,11 @@
   "language": {
     "toggle": "عربي"
   },
+  "roles": {
+    "admin": "System Administrator",
+    "stylist": "Staff",
+    "customer": "Customer Account"
+  },
   "notFound": "Page Not Found",
   "goHome": "Go Home"
 }
