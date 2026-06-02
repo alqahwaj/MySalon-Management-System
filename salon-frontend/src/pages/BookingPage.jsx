@@ -10,6 +10,13 @@ function today() {
   return new Date().toISOString().split('T')[0]
 }
 
+// 🌟 دالة جديدة عشان تعالج مسار الصور سواء كانت من كلاوديناري أو محلية
+function getValidImageUrl(rawImageUrl, serverUrl) {
+  if (!rawImageUrl) return null;
+  if (rawImageUrl.startsWith('http')) return rawImageUrl;
+  return rawImageUrl.startsWith('/') ? `${serverUrl}${rawImageUrl}` : `${serverUrl}/${rawImageUrl}`;
+}
+
 function StepIndicator({ current, total, label }) {
   return (
     <div className="flex items-center gap-3 mb-8">
@@ -58,17 +65,15 @@ function Step1({ onSelect, selected }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {services.map(s => {
-        // 🌟 التعديل الحاسم: أخذنا الـ ID تبع الصالون فقط، وتجاهلنا تبع الكتالوج!
         const id = s.id || s.Id; 
-        
         const name = s.serviceName || s.ServiceName || s.service?.name || s.Service?.Name || 'Service';
         const description = s.description || s.Description || s.service?.description || s.Service?.Description;
         const duration = s.durationMinutes || s.DurationMinutes || s.duration || s.Duration;
         const price = s.price || s.Price;
         
-        // مسار الصورة
+        // 🌟 التعديل الحاسم للصور باستخدام الدالة
         const rawImageUrl = s.imageUrl || s.ImageUrl || s.serviceImageUrl || s.ServiceImageUrl || s.service?.imageUrl || s.service?.ImageUrl || s.Service?.imageUrl || s.Service?.ImageUrl;
-        const finalImageUrl = rawImageUrl ? (rawImageUrl.startsWith('/') ? `${SERVER_URL}${rawImageUrl}` : `${SERVER_URL}/${rawImageUrl}`) : null;
+        const finalImageUrl = getValidImageUrl(rawImageUrl, SERVER_URL);
 
         return (
           <Card
@@ -141,8 +146,10 @@ function Step2({ onSelect, selected }) {
         const lName = s.lastName || s.LastName || '';
         const spec = s.specialization || s.Specialization;
         const initials = `${fName[0] || ''}${lName[0] || ''}`.toUpperCase();
+        
+        // 🌟 التعديل الحاسم للصور باستخدام الدالة
         const rawImageUrl = s.imageUrl || s.ImageUrl;
-        const finalImageUrl = rawImageUrl ? (rawImageUrl.startsWith('/') ? `${SERVER_URL}${rawImageUrl}` : `${SERVER_URL}/${rawImageUrl}`) : null;
+        const finalImageUrl = getValidImageUrl(rawImageUrl, SERVER_URL);
 
         return (
           <Card
@@ -296,7 +303,7 @@ export default function BookingPage() {
   const [success, setSuccess]   = useState(false)
   const [error, setError]       = useState('')
 
-  const salonId = import.meta.env.VITE_DEFAULT_SALON_ID; // 🌟 جلبنا الـ SalonId
+  const salonId = import.meta.env.VITE_DEFAULT_SALON_ID; 
 
   const canNext = {
     1: !!service,
