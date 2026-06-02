@@ -9,6 +9,7 @@ using MySalon.Domain.Entities;
 using MySalon.Infrastructure.Data;
 using MySalon.Infrastructure.Repositories;
 using MySalon.Infrastructure.Services;
+using MySalon.Infrastructure.Settings;
 
 namespace MySalon.Infrastructure.Extensions
 {
@@ -42,6 +43,8 @@ namespace MySalon.Infrastructure.Extensions
             services.AddScoped<IDashboardAppService, DashboardAppService>();
 
             services.AddScoped<IFileService, LocalFileService>();
+
+            services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
 
             services.AddScoped<IPhotoService, PhotoService>();
 

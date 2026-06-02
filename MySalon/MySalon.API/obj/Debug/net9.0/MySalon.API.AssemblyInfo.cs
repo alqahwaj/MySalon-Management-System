@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MySalon.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+672c0e5989e53b45951430aedd0a7007f4b6534b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c59ed4167a5bb2f0a0fe3302c4adf79ed1247c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("MySalon.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MySalon.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
