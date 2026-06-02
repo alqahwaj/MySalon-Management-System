@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("ebb03e4e-763e-4974-b469-59380e48beaf")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("MySalon.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe337d60ad56cadd9e44da4dd13ab9961b2aae59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+672c0e5989e53b45951430aedd0a7007f4b6534b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MySalon.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MySalon.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
