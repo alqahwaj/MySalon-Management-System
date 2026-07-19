@@ -22,6 +22,7 @@ namespace MySalon.Infrastructure.Extensions
 
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<MySalonDbContext>().AddDefaultTokenProviders();
 
+            services.AddHttpContextAccessor();
             services.AddScoped<ISalonRepository, SalonRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<ISalonServiceRepository, SalonServiceRepository>();
@@ -33,6 +34,7 @@ namespace MySalon.Infrastructure.Extensions
 
 
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<ISalonAppService, SalonAppService>();
             services.AddScoped<IServiceAppService, ServiceAppService>();
             services.AddScoped<ISalonServiceAppService, SalonServiceAppService>();

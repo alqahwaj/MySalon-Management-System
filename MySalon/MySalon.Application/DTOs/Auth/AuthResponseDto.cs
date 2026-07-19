@@ -12,5 +12,8 @@
         public string Role { get; set; } = string.Empty;
 
         public DateTime? ExpiresOn { get; set; }
+
+        public string? RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiration { get; set; }
     }
 }

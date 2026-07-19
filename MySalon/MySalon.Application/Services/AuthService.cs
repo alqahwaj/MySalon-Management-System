@@ -127,7 +127,7 @@ namespace MySalon.Application.Services
             var keyString = _configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Secret Key is missing in configuration.");
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
 
-            var tokenExpiry = DateTime.Now.AddDays(30);
+            var tokenExpiry = DateTime.Now.AddMinutes(15);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
@@ -137,16 +137,75 @@ namespace MySalon.Application.Services
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
             );
 
+            var refreshToken = GenerateRefreshToken();
+
+            var refreshTokenExpiry = DateTime.Now.AddDays(7);
+
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiryTime = refreshTokenExpiry;
+            await _userManager.UpdateAsync(user);
+
             return new AuthResponseDto
             {
                 IsAuthenticated = true,
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
+                RefreshToken = refreshToken, 
+                RefreshTokenExpiration = refreshTokenExpiry,
                 Email = user.Email ?? string.Empty,
                 UserId = user.Id,
                 Role = userRoles.FirstOrDefault() ?? string.Empty,
                 Message = "Success",
                 ExpiresOn = tokenExpiry
             };
+        }
+
+        public async Task<AuthResponseDto> RefreshTokenAsync(RefreshTokenDto model)
+        {
+            var principal = GetPrincipalFromExpiredToken(model.Token);
+            if (principal == null)
+                return new AuthResponseDto { Message = "Invalid access token or refresh token", IsAuthenticated = false };
+
+            var email = principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var user = await _userManager.FindByEmailAsync(email!);
+
+            if (user == null || user.RefreshToken != model.RefreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+                return new AuthResponseDto { Message = "Invalid access token or refresh token", IsAuthenticated = false };
+
+            return await GenerateJwtToken(user);
+        }
+
+
+        private string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[64];
+            using var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
+        }
+
+        private ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = true,
+                ValidateIssuer = true,
+                ValidIssuer = _configuration["Jwt:Issuer"],
+                ValidAudience = _configuration["Jwt:Audience"],
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)),
+                ValidateLifetime = false 
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+
+            if (securityToken is not JwtSecurityToken jwtSecurityToken ||
+                !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new SecurityTokenException("Invalid token");
+            }
+
+            return principal;
         }
     }
 }

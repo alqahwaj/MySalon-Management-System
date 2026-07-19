@@ -14,11 +14,13 @@ namespace MySalon.Application.Services
     {
         private readonly ICustomerRepository _repository;
         private readonly IBookingRepository _bookingRepository;
+        private readonly ICurrentUserService _currentUserService;
 
-        public CustomerAppService(ICustomerRepository repository, IBookingRepository bookingRepository)
+        public CustomerAppService(ICustomerRepository repository, IBookingRepository bookingRepository, ICurrentUserService currentUserService)
         {
             _repository = repository;
             _bookingRepository = bookingRepository;
+            _currentUserService = currentUserService;
         }
 
         public async Task<CustomerDto> CreateCustomerAsync(CreateCustomerDto dto, string? userId = null)
@@ -52,14 +54,20 @@ namespace MySalon.Application.Services
         public async Task<CustomerDto?> GetCustomerByEmailAsync(string email)
         {
             var customer = await _repository.GetByEmailAsync(email);
-            if (customer == null) return null;
+
+            if (customer == null)
+                return null;
+
             return MapToDto(customer);
         }
 
         public async Task<CustomerDto?> GetCustomerByIdAsync(Guid id)
         {
             var customer = await _repository.GetByIdAsync(id);
-            if (customer == null) return null;
+
+            if (customer == null) 
+                return null;
+
             return MapToDto(customer);
         }
 
@@ -69,6 +77,8 @@ namespace MySalon.Application.Services
 
             if (customer == null)
                 throw new NotFoundException(nameof(Customer), id);
+
+            _currentUserService.EnsureOwnershipOrIsAdmin(customer.ApplicationUserId);
 
             if (dto.Email != customer.Email)
             {
@@ -100,6 +110,8 @@ namespace MySalon.Application.Services
             var customer = await _repository.GetByIdAsync(id);
             if (customer == null)
                 throw new NotFoundException(nameof(Customer), id);
+
+            _currentUserService.EnsureOwnershipOrIsAdmin(customer.ApplicationUserId);
 
             bool hasBookings = await _bookingRepository.HasActiveBookingsForCustomerAsync(id);
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using MySalon.Application.DTOs.Auth; 
 using MySalon.Application.Interfaces.Services;
 
@@ -67,12 +68,28 @@ namespace MySalon.API.Controllers
         }
 
         [HttpPost("login")]
+        [EnableRateLimiting("AuthLimiter")]
         public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var result = await _authService.LoginAsync(model);
 
             if (!result.IsAuthenticated)
                 return BadRequest(result.Message);
+
+            return Ok(result);
+        }
+
+        [HttpPost("refresh")]
+        [EnableRateLimiting("AuthLimiter")] 
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDto model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _authService.RefreshTokenAsync(model);
+
+            if (!result.IsAuthenticated)
+                return BadRequest(new { Message = result.Message });
 
             return Ok(result);
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MySalon.API.Extensions;
 using MySalon.API.Middlewares;
 using MySalon.Infrastructure.Extensions;
 using System.Text;
@@ -39,6 +40,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddCustomRateLimiting();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -110,6 +113,8 @@ app.UseStaticFiles();
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors("AllowAll");
+
+app.UseRateLimiter();
 
 app.UseAuthentication();
 app.UseAuthorization();

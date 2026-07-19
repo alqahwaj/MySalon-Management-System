@@ -16,18 +16,21 @@ namespace MySalon.Application.Services
         private readonly IStylistRepository _repository;
         private readonly IBookingRepository _bookingRepository;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IPhotoService _photoService; 
+        private readonly IPhotoService _photoService;
+        private readonly ICurrentUserService _currentUserService; 
 
         public StylistAppService(
             IStylistRepository repository,
             IBookingRepository bookingRepository,
             UserManager<ApplicationUser> userManager,
-            IPhotoService photoService) 
+            IPhotoService photoService,
+            ICurrentUserService currentUserService) 
         {
             _repository = repository;
             _bookingRepository = bookingRepository;
             _userManager = userManager;
             _photoService = photoService;
+            _currentUserService = currentUserService;
         }
 
         public async Task<StylistDto> CreateStylistAsync(CreateStylistDto dto)
@@ -59,7 +62,7 @@ namespace MySalon.Application.Services
                 Phone = dto.Phone,
                 Email = dto.Email,
                 Bio = dto.Bio,
-                ImageUrl = imageUrl, 
+                ImageUrl = imageUrl,
                 IsActive = true,
                 ApplicationUserId = user.Id
             };
@@ -100,7 +103,7 @@ namespace MySalon.Application.Services
                 Bio = stylist.Bio ?? string.Empty,
                 Rating = stylist.Rating,
                 ImageUrl = stylist.ImageUrl ?? string.Empty,
-                IsActive = stylist.IsActive
+                IsActive = stylist.IsActive,
             };
         }
 
@@ -110,6 +113,8 @@ namespace MySalon.Application.Services
 
             if (stylist == null)
                 throw new NotFoundException(nameof(Stylist), id);
+
+            _currentUserService.EnsureOwnershipOrIsAdmin(stylist.ApplicationUserId);
 
             if (dto.Email != stylist.Email)
             {
@@ -122,12 +127,11 @@ namespace MySalon.Application.Services
             }
 
             stylist.FirstName = dto.FirstName;
-            stylist.LastName = dto.LastName;
+            stylist.LastName = stylist.LastName;
             stylist.Phone = dto.Phone;
             stylist.Email = dto.Email;
             stylist.Bio = dto.Bio;
 
-            // 👈 لوجيك تحديث الصورة على Cloudinary
             if (dto.ImageFile != null)
             {
                 stylist.ImageUrl = await _photoService.AddPhotoAsync(dto.ImageFile);
@@ -147,6 +151,8 @@ namespace MySalon.Application.Services
 
             if (stylist == null)
                 throw new NotFoundException(nameof(Stylist), id);
+
+            _currentUserService.EnsureOwnershipOrIsAdmin(stylist.ApplicationUserId);
 
             bool hasBookings = await _bookingRepository.HasActiveBookingsForStylistAsync(id);
 

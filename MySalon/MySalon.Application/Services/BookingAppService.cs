@@ -10,7 +10,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using MySalon.Application.DTOs.Common;
 
-
 namespace MySalon.Application.Services
 {
     public class BookingAppService : IBookingAppService
@@ -19,17 +18,23 @@ namespace MySalon.Application.Services
         private readonly IStylistRepository _stylistRepository;
         private readonly ISalonServiceRepository _salonServiceRepository;
         private readonly IStylistWorkHoursRepository _workHoursRepository;
+        private readonly ICurrentUserService _currentUserService; // 👈 إضافة خدمة المستخدم الحالي
+        private readonly ICustomerRepository _customerRepository; // 👈 إضافة مستودع العملاء لجلب الـ ApplicationUserId
 
         public BookingAppService(
             IBookingRepository bookingrepository,
             IStylistRepository stylistRepository,
             ISalonServiceRepository salonServiceRepository,
-            IStylistWorkHoursRepository workHoursRepository)
+            IStylistWorkHoursRepository workHoursRepository,
+            ICurrentUserService currentUserService,
+            ICustomerRepository customerRepository)
         {
             _bookingrepository = bookingrepository;
             _stylistRepository = stylistRepository;
             _salonServiceRepository = salonServiceRepository;
             _workHoursRepository = workHoursRepository;
+            _currentUserService = currentUserService;
+            _customerRepository = customerRepository;
         }
 
         public async Task<BookingDto> CreateBookingAsync(CreateBookingDto dto)
@@ -44,6 +49,10 @@ namespace MySalon.Application.Services
                 throw new Exception("Cannot book an appointment in the past.");
             }
 
+            // 👇 الحماية: التحقق من أن المستخدم الحالي يملك حساب العميل المذكور في الطلب
+            var customer = await _customerRepository.GetByIdAsync(dto.CustomerId.Value);
+            _currentUserService.EnsureOwnershipOrIsAdmin(customer?.ApplicationUserId);
+
             var salonService = await _salonServiceRepository.GetByIdAsync(dto.SalonServiceId);
             if (salonService == null)
                 throw new NotFoundException(nameof(SalonService), dto.SalonServiceId);
@@ -53,7 +62,6 @@ namespace MySalon.Application.Services
             var dayOfWeek = dto.StartTime.DayOfWeek;
 
             var allWorkHours = await _workHoursRepository.GetByStylistIdAsync(dto.StylistId);
-
             var todayWorkHour = allWorkHours.FirstOrDefault(w => w.DayOfWeek == dayOfWeek);
 
             if (todayWorkHour == null)
@@ -96,7 +104,7 @@ namespace MySalon.Application.Services
 
             return new DTOs.Common.PagedResult<BookingDto>
             {
-                Items = items.Select(MapToDto).ToList(), 
+                Items = items.Select(MapToDto).ToList(),
                 Page = page,
                 PageSize = pageSize,
                 TotalCount = totalCount
@@ -108,6 +116,10 @@ namespace MySalon.Application.Services
             var booking = await _bookingrepository.GetByIdAsync(id);
             if (booking == null)
                 throw new NotFoundException(nameof(Booking), id);
+
+            // 👇 الحماية: جلب بيانات العميل المرتبط بالحجز للتحقق من ملكيته
+            var customer = await _customerRepository.GetByIdAsync(booking.CustomerId);
+            _currentUserService.EnsureOwnershipOrIsAdmin(customer?.ApplicationUserId);
 
             if (booking.Status == BookingStatus.Completed || booking.Status == BookingStatus.Cancelled)
                 throw new Exception("Cannot cancel a completed or already cancelled booking.");
@@ -122,6 +134,10 @@ namespace MySalon.Application.Services
             var booking = await _bookingrepository.GetByIdAsync(id);
             if (booking == null)
                 throw new NotFoundException(nameof(Booking), id);
+
+            // 👇 الحماية: جلب بيانات العميل المرتبط بالحجز للتحقق من ملكيته قبل إعادة الجدولة
+            var customer = await _customerRepository.GetByIdAsync(booking.CustomerId);
+            _currentUserService.EnsureOwnershipOrIsAdmin(customer?.ApplicationUserId);
 
             if (booking.StartTime == newTime)
                 return MapToDto(booking);
@@ -214,7 +230,7 @@ namespace MySalon.Application.Services
                 var currentSlotEnd = currentSlotStart + serviceDuration;
 
                 bool hasConflict = bookings.Any(b =>
-                    b.Status != BookingStatus.Cancelled && 
+                    b.Status != BookingStatus.Cancelled &&
                     currentSlotStart < b.EndTime &&
                     b.StartTime < currentSlotEnd
                 );
@@ -227,7 +243,6 @@ namespace MySalon.Application.Services
 
             return availableSlots;
         }
-
 
         public async Task<IEnumerable<BookingDto>> GetMyStylistBookingsAsync(string applicationUserId, DateTime? date = null, BookingStatus? status = null)
         {
@@ -262,6 +277,10 @@ namespace MySalon.Application.Services
 
         public async Task<DTOs.Common.PagedResult<BookingDto>> GetMyBookingsAsync(Guid customerId, int page, int pageSize, BookingStatus? status)
         {
+            // 👇 الحماية: منع أي شخص من استعراض قائمة حجوزات لا تخصه
+            var customer = await _customerRepository.GetByIdAsync(customerId);
+            _currentUserService.EnsureOwnershipOrIsAdmin(customer?.ApplicationUserId);
+
             var (items, totalCount) = await _bookingrepository.GetPagedBookingsByCustomerAsync(customerId, page, pageSize, status);
 
             return new DTOs.Common.PagedResult<BookingDto>
