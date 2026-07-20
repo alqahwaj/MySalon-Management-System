@@ -13,7 +13,10 @@ namespace MySalon.API.Extensions
 
                 options.AddPolicy("AuthLimiter", httpContext =>
                 {
-                    var ip = httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+                    // استخراج الـ IP الحقيقي حتى لو كان وراء بروجكت سحابي أو Proxy
+                    var ip = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                             ?? httpContext.Connection.RemoteIpAddress?.ToString()
+                             ?? "unknown";
 
                     return RateLimitPartition.GetFixedWindowLimiter(
                         partitionKey: ip,
