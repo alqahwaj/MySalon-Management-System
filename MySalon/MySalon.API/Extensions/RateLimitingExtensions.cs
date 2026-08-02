@@ -13,7 +13,6 @@ namespace MySalon.API.Extensions
 
                 options.AddPolicy("AuthLimiter", httpContext =>
                 {
-                    // استخراج الـ IP الحقيقي حتى لو كان وراء بروجكت سحابي أو Proxy
                     var ip = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
                              ?? httpContext.Connection.RemoteIpAddress?.ToString()
                              ?? "unknown";
