@@ -1,34 +1,34 @@
-﻿using System.Threading.RateLimiting;
-using Microsoft.AspNetCore.RateLimiting;
+﻿    using System.Threading.RateLimiting;
+    using Microsoft.AspNetCore.RateLimiting;
 
-namespace MySalon.API.Extensions
-{
-    public static class RateLimitingExtensions
+    namespace MySalon.API.Extensions
     {
-        public static IServiceCollection AddCustomRateLimiting(this IServiceCollection services)
+        public static class RateLimitingExtensions
         {
-            services.AddRateLimiter(options =>
+            public static IServiceCollection AddCustomRateLimiting(this IServiceCollection services)
             {
-                options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
-
-                options.AddPolicy("AuthLimiter", httpContext =>
+                services.AddRateLimiter(options =>
                 {
-                    var ip = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
-                             ?? httpContext.Connection.RemoteIpAddress?.ToString()
-                             ?? "unknown";
+                    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
 
-                    return RateLimitPartition.GetFixedWindowLimiter(
-                        partitionKey: ip,
-                        factory: _ => new FixedWindowRateLimiterOptions
-                        {
-                            PermitLimit = 5,
-                            Window = TimeSpan.FromMinutes(1),
-                            QueueLimit = 0
-                        });
+                    options.AddPolicy("AuthLimiter", httpContext =>
+                    {
+                        var ip = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                                 ?? httpContext.Connection.RemoteIpAddress?.ToString()
+                                 ?? "unknown";
+
+                        return RateLimitPartition.GetFixedWindowLimiter(
+                            partitionKey: ip,
+                            factory: _ => new FixedWindowRateLimiterOptions
+                            {
+                                PermitLimit = 5,
+                                Window = TimeSpan.FromMinutes(1),
+                                QueueLimit = 0
+                            });
+                    });
                 });
-            });
 
-            return services;
+                return services;
+            }
         }
     }
-}

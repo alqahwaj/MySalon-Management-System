@@ -31,6 +31,8 @@ namespace MySalon.Infrastructure.Extensions
             services.AddScoped<IStylistWorkHoursRepository, StylistWorkHoursRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IDashboardRepository, DashboardRepository>();
+            services.AddScoped<IAuditRepository, AuditRepository>();
+
 
 
             services.AddScoped<IAuthService, AuthService>();
@@ -43,6 +45,7 @@ namespace MySalon.Infrastructure.Extensions
             services.AddScoped<IBookingAppService, BookingAppService>();
             services.AddScoped<IStylistWorkHourAppService, StylistWorkHoursAppService>();
             services.AddScoped<IDashboardAppService, DashboardAppService>();
+            services.AddScoped<IAuditService, AuditService>();
 
             services.AddScoped<IFileService, LocalFileService>();
 

@@ -12,10 +12,13 @@ namespace MySalon.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ILogger<AuthController> _logger; 
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
+
         }
 
         
@@ -74,8 +77,12 @@ namespace MySalon.API.Controllers
             var result = await _authService.LoginAsync(model);
 
             if (!result.IsAuthenticated)
+            {
+                _logger.LogWarning("SECURITY ALERT: Failed login attempt for email: {Email}. Reason: {Message}", model.Email, result.Message);
                 return BadRequest(result.Message);
+            }
 
+            _logger.LogInformation("User {Email} logged in successfully.", model.Email);
             return Ok(result);
         }
 

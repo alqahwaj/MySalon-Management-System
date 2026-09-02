@@ -16,15 +16,23 @@ namespace MySalon.API.Controllers
         private readonly IBookingAppService _bookingAppService;
         private readonly ICustomerAppService _customerAppService;
         private readonly IStylistAppService _stylistAppService;
+        private readonly IAuditService _auditService;
+        private readonly ILogger<BookingController> _logger; 
+
+
 
         public BookingController(
             IBookingAppService bookingAppService,
             ICustomerAppService customerAppService,
-            IStylistAppService stylistAppService)
+            IStylistAppService stylistAppService,
+            IAuditService auditService,
+            ILogger<BookingController> logger)
         {
             _bookingAppService = bookingAppService;
             _customerAppService = customerAppService;
             _stylistAppService = stylistAppService;
+            _auditService = auditService;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -73,10 +81,20 @@ namespace MySalon.API.Controllers
             if (booking == null)
                 return NotFound();
 
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (!await IsAuthorizedForBookingAsync(booking))
+            {
+                _logger.LogWarning("SECURITY ALERT: User {UserId} attempted to cancel unauthorized booking {BookingId}", currentUserId, id);
                 return Forbid();
+            }
 
             await _bookingAppService.CancelBookingAsync(id);
+
+            await _auditService.LogActionAsync(currentUserId!, "Cancel Booking", "Bookings", id.ToString());
+
+            _logger.LogInformation("Booking {BookingId} was successfully cancelled by User {UserId}", id, currentUserId);
+
             return NoContent();
         }
 

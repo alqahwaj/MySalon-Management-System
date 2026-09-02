@@ -21,6 +21,7 @@ namespace MySalon.Infrastructure.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<Stylist> Stylists { get; set; }
         public DbSet<StylistWorkHours> StylistWorkHours { get; set; }
+        public DbSet<AuditLog> AuditLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
